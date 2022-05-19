@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import myStore from './store/store';
+import useStore from './store/store';
 
 // const [name, setName] = useState('user'); //state값 name, setName함수를 통해 name을 바꿈
 // const [email, setEmail] = useState('user@tistory.com'); //state값 email, setEmail함수를 통해 email을 바꿈
 
 function App() {
-	const { count, increaseCount, setCnt, clearCnt } = myStore(); // 방법 1
+	const { count, increaseCount, setCnt, clearCnt } = useStore(); // 방법 1
 
 	/* 방법 2
 		let count = myStore(state => state.count);

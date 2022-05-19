@@ -1,22 +1,42 @@
 import create from 'zustand';
+import { devtools } from 'zustand/middleware';
 
-const myStore = create(set => ({
+// const useStore = create(
+// 	devtools(set => ({
+// 		count: 0,
+
+// 		increaseCount: state => {
+// 			set(state => {
+// 				return { count: state.count + 1 };
+// 			});
+// 		},
+// 	})),
+// );
+
+// export default useStore;
+
+const myStore = set => ({
 	count: 0,
 
 	increaseCount: state => {
 		set(state => {
-			// console.log(`prevCnt = ${state.count}`);
 			return { count: state.count + 1 };
-		}); // set method로 상태 변경 가능
+		});
 	},
+});
 
-	setCnt: input => {
-		set({ count: input });
-	},
+const useStore = create(devtools(myStore));
 
-	clearCnt: () => {
-		set(state => ({ count: 0 }));
-	},
-}));
+export default useStore;
 
-export default myStore;
+/*
+
+setCnt: input => {
+	set({ count: input });
+},
+
+clearCnt: () => {
+	set(state => ({ count: 0 }));
+},
+
+*/

@@ -23,6 +23,14 @@ const myStore = set => ({
 			return { count: state.count + 1 };
 		});
 	},
+
+	setCnt: input => {
+		set({ count: input });
+	},
+
+	clearCnt: () => {
+		set(state => ({ count: 0 }));
+	},
 });
 
 const useStore = create(devtools(myStore));
